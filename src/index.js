@@ -1,23 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-        throw new TypeError("Cannot call a class as a function");
-    }
-}
 
 function _possibleConstructorReturn(self, call) {
-    if (!self) {
-        throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-    }
     return call && (typeof call === "object" || typeof call === "function") ? call : self;
 }
 
 function _inherits(subClass, superClass) {
-    if (typeof superClass !== "function" && superClass !== null) {
-        throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-    }
     subClass.prototype = Object.create(superClass && superClass.prototype, {
         constructor: {
             value: subClass,
@@ -41,7 +30,6 @@ var Board = function (_React$Component) {
     _inherits(Board, _React$Component);
 
     function Board() {
-        _classCallCheck(this, Board);
 
         return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
     }
@@ -92,7 +80,6 @@ var Game = function (_React$Component2) {
     _inherits(Game, _React$Component2);
 
     function Game() {
-        _classCallCheck(this, Game);
 
         var _this3 = _possibleConstructorReturn(this, _React$Component2.call(this));
 
@@ -130,66 +117,72 @@ var Game = function (_React$Component2) {
         });
     };
 
-    Game.prototype.render = function render() {
-        var _this4 = this;
 
-        var history = this.state.history;
-        var current = history[this.state.stepNumber];
-        var winner = calculateWinner(current.squares);
+    Game.prototype.render = function render(){
+        return(<div> <h1> hi</h1>hello</div>)
 
-        var moves = history.map(function (step, move) {
-            var desc = move ? 'Go to move #' + move : 'Go to game start';
-            return React.createElement(
-                "li",
-                {key: move},
-                React.createElement(
-                    "button",
-                    {
-                        onClick: function onClick() {
-                            return _this4.jumpTo(move);
-                        }
-                    },
-                    desc
-                )
-            );
-        });
+    }
 
-        var status = undefined;
-        if (winner) {
-            status = "Winner: " + winner;
-        } else {
-            status = "Next player: " + (this.state.xIsNext ? "X" : "O");
-        }
-
-        return React.createElement(
-            "div",
-            {className: "game"},
-            React.createElement(
-                "div",
-                {className: "game-board"},
-                React.createElement(Board, {
-                    squares: current.squares,
-                    onClick: function onClick(i) {
-                        return _this4.handleClick(i);
-                    }
-                })
-            ),
-            React.createElement(
-                "div",
-                {className: "game-info"},
-                React.createElement(
-                    "div",
-                    null,
-                    status
-                ),
-                React.createElement(
-                    "ol",
-                    null,
-                    moves
-                )
-            )
-        );
-    };
+    // Game.prototype.render = function render() {
+    //     var _this4 = this;
+    //
+    //     var history = this.state.history;
+    //     var current = history[this.state.stepNumber];
+    //     var winner = calculateWinner(current.squares);
+    //
+    //     var moves = history.map(function (step, move) {
+    //         var desc = move ? 'Go to move #' + move : 'Go to game start';
+    //         return React.createElement(
+    //             "li",
+    //             {key: move},
+    //             React.createElement(
+    //                 "button",
+    //                 {
+    //                     onClick: function onClick() {
+    //                         return _this4.jumpTo(move);
+    //                     }
+    //                 },
+    //                 desc
+    //             )
+    //         );
+    //     });
+    //
+    //     var status = undefined;
+    //     if (winner) {
+    //         status = "Winner: " + winner;
+    //     } else {
+    //         status = "Next player: " + (this.state.xIsNext ? "X" : "O");
+    //     }
+    //
+    //     return React.createElement(
+    //         "div",
+    //         {className: "game"},
+    //         React.createElement(
+    //             "div",
+    //             {className: "game-board"},
+    //             React.createElement(Board, {
+    //                 squares: current.squares,
+    //                 onClick: function onClick(i) {
+    //                     return _this4.handleClick(i);
+    //                 }
+    //             })
+    //         ),
+    //         React.createElement(
+    //             "div",
+    //             {className: "game-info"},
+    //             React.createElement(
+    //                 "div",
+    //                 null,
+    //                 status
+    //             ),
+    //             React.createElement(
+    //                 "ol",
+    //                 null,
+    //                 moves
+    //             )
+    //         )
+    //     );
+    // };
 
     return Game;
 }(React.Component);
