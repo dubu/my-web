@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 var { StyleSheet, View, Text, ActivityIndicatorIOS } = React;
-
+var jsonHeader = {headers:{Accept:'application/json'}};
 
 
 function _possibleConstructorReturn(self, call) {
@@ -194,28 +194,59 @@ var Game = function (_React$Component2) {
 var ListView = function (_React$Component3) {
     _inherits(ListView, _React$Component3);
 
+    // this.topics = [];
+
     function ListView() {
 
         var _this3 = _possibleConstructorReturn(this, _React$Component3.call(this));
 
         _this3.state = {
+            // topics : [],
             history: [{
                 squares: Array(9).fill(null)
             }],
             stepNumber: 0,
             xIsNext: true
         };
+
+        // load json
+        load();
         return _this3;
-    }
+    };
+
+
+    function load() {
+
+        var url = "https://raw.githubusercontent.com/goodroad/goodroad.github.io/master/html/news.json";
+        var req = fetch(url , jsonHeader).then(res => res.json());
+
+
+        return Promise.all([req])
+            .then(([data]) => {
+
+            // console.log(data);
+            // this.topics = data;
+                this.setState({topics: data})
+        });
+    };
+
+
+
 
     ListView.prototype.render = function render(){
+        // var post = this.state.topics;
         const startIndex = 1;
-        const endIndex= 10;
+        // const endIndex= 10;
+        const endIndex= this.state.topics.length;
+
+
+        console.log(this.state.topics);
 
         const items = []
         let index = startIndex
         while (index < endIndex) {
-            items.push(<li key={index}>{index}</li>)
+            // items.push(<li key={index}>{topics.get(index).title}</li>)
+            items.push(<li key={index}>{1}</li>)
             index++
         }
         return (
