@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+var { StyleSheet, View, Text, ActivityIndicatorIOS } = React;
+
 
 
 function _possibleConstructorReturn(self, call) {
@@ -120,8 +122,9 @@ var Game = function (_React$Component2) {
 
     Game.prototype.render = function render(){
         return(<div> <h1> hi</h1>hello</div>)
-
     }
+
+
 
     // Game.prototype.render = function render() {
     //     var _this4 = this;
@@ -187,9 +190,53 @@ var Game = function (_React$Component2) {
     return Game;
 }(React.Component);
 
+
+var ListView = function (_React$Component3) {
+    _inherits(ListView, _React$Component3);
+
+    function ListView() {
+
+        var _this3 = _possibleConstructorReturn(this, _React$Component3.call(this));
+
+        _this3.state = {
+            history: [{
+                squares: Array(9).fill(null)
+            }],
+            stepNumber: 0,
+            xIsNext: true
+        };
+        return _this3;
+    }
+
+    ListView.prototype.render = function render(){
+        const startIndex = 1;
+        const endIndex= 10;
+
+        const items = []
+        let index = startIndex
+        while (index < endIndex) {
+            items.push(<li key={index}>{index}</li>)
+            index++
+        }
+        return (
+
+            <div style={{ height: '100%', overflowY: 'scroll' }} onScroll={this.handleScroll}>
+                <ol>
+                    {items}
+                </ol>
+            </div>
+        )
+    };
+
+
+    return ListView;
+}(React.Component);
+
+
 // ========================================
 
-ReactDOM.render(React.createElement(Game, null), document.getElementById("root"));
+// ReactDOM.render(React.createElement(Game, null), document.getElementById("root"));
+ReactDOM.render(React.createElement(ListView, null), document.getElementById("root"));
 
 function calculateWinner(squares) {
     var lines = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];

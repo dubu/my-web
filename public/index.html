@@ -43,9 +43,9 @@ window.addEventListener('click', function(e) {
   }
 });
 window.onerror = function(message, source, line, col, error) {
-  var text = error ? error.stack || error : message + ' (at ' + source + ':' + line + ':' + col + ')';
-  errors.textContent += text + '\n';
-  errors.style.display = '';
+//  var text = error ? error.stack || error : message + ' (at ' + source + ':' + line + ':' + col + ')';
+//  errors.textContent += text + '\n';
+//  errors.style.display = '';
 };
 console.error = (function(old) {
   return function error() {

@@ -5,5 +5,7 @@ cd my-app/
 npm start
 
 
+npm run deploy
+
 1. web
 2. react native
