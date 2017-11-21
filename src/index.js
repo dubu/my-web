@@ -231,14 +231,17 @@ var ListView = function (_React$Component3) {
     // };
 
     ListView.prototype.componentWillMount = function (){
-        var url = "https://raw.githubusercontent.com/goodroad/goodroad.github.io/master/html/news.json";
+        // var url = "https://raw.githubusercontent.com/goodroad/goodroad.github.io/master/html/news.json";
+        // var url = "https://storyfunding.kakao.com/toros/article?timestamp=";
+        var url = "articles.json";
         var req = fetch(url , jsonHeader).then(res => res.json());
         Promise.all([req])
             .then(([data]) => {
 
                 // console.log(data);
                 // this.topics = data;
-                this.setState({topics: data})
+                // this.setState({topics: data.items})
+                this.setState({topics: data.list})
                 console.log("load");
             });
     };
@@ -259,7 +262,7 @@ var ListView = function (_React$Component3) {
         console.log(this.state.topics);
 
         // const endIndex= 10;
-        const endIndex= this.state.topics.items.length;
+        const endIndex= this.state.topics.length;
 
         // const items = []
         let index = startIndex
@@ -270,8 +273,8 @@ var ListView = function (_React$Component3) {
         // }
 
 
-        var items  =  this.state.topics.items.map(function (item, index) {
-            return <li key={index}>{item.title}</li>
+        var items  =  this.state.topics.map(function (item, index) {
+            return <li key={index}>{item.episodeName}</li>
         }.bind(this))
         console.log(items)
         return  (
