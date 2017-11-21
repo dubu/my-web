@@ -294,6 +294,7 @@ var ListView = function (_React$Component3) {
 
 // ========================================
 // ReactDOM.render(React.createElement(Game, null), document.getElementById("root"));
+
 ReactDOM.render(React.createElement(ListView, null), document.getElementById("root"));
 
 function calculateWinner(squares) {
