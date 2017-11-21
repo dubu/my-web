@@ -210,46 +210,71 @@ var ListView = function (_React$Component3) {
         };
 
         // load json
-        load();
+        // load();
         return _this3;
     };
 
+    // function load() {
+    //
+    //     var url = "https://raw.githubusercontent.com/goodroad/goodroad.github.io/master/html/news.json";
+    //     var req = fetch(url , jsonHeader).then(res => res.json());
+    //
+    //     return Promise.all([req])
+    //         .then(([data]) => {
+    //
+    //         console.log(data);
+    //         // this.topics = data;
+    //             ListView.prototype.setState({topics: data})
+    //
+    //             console.log("loaded")
+    //     });
+    // };
 
-    function load() {
-
+    ListView.prototype.componentWillMount = function (){
         var url = "https://raw.githubusercontent.com/goodroad/goodroad.github.io/master/html/news.json";
         var req = fetch(url , jsonHeader).then(res => res.json());
-
-
-        return Promise.all([req])
+        Promise.all([req])
             .then(([data]) => {
 
-            // console.log(data);
-            // this.topics = data;
+                // console.log(data);
+                // this.topics = data;
                 this.setState({topics: data})
-        });
+                console.log("load");
+            });
     };
 
-
-
-
     ListView.prototype.render = function render(){
+
+        // load();
+
+        if(this.state.topics){
+
+        }else{
+            return   (<div> <h1> hi</h1> load...</div>)
+        }
         // var post = this.state.topics;
         const startIndex = 1;
-        // const endIndex= 10;
-        const endIndex= this.state.topics.length;
 
-
+        console.log("render");
         console.log(this.state.topics);
 
-        const items = []
+        // const endIndex= 10;
+        const endIndex= this.state.topics.items.length;
+
+        // const items = []
         let index = startIndex
-        while (index < endIndex) {
-            // items.push(<li key={index}>{topics.get(index).title}</li>)
-            items.push(<li key={index}>{1}</li>)
-            index++
-        }
-        return (
+        // while (index < endIndex) {
+        //     // items.push(<li key={index}>{topics.get(index).title}</li>)
+        //     items.push(<li key={index}>{this.state.topics.items.get(index).title}</li>)
+        //     index++
+        // }
+
+
+        var items  =  this.state.topics.items.map(function (item, index) {
+            return <li key={index}>{item.title}</li>
+        }.bind(this))
+        console.log(items)
+        return  (
 
             <div style={{ height: '100%', overflowY: 'scroll' }} onScroll={this.handleScroll}>
                 <ol>
