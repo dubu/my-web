@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-var { StyleSheet, View, Text, ActivityIndicatorIOS } = React;
 var jsonHeader = {headers:{Accept:'application/json'}};
 
 
@@ -274,16 +273,13 @@ var ListView = function (_React$Component3) {
 
 
         var items  =  this.state.topics.map(function (item, index) {
-            return <li key={index}>{item.episodeName}</li>
+            return <div key={index}>{item.episodeName}</div>
         }.bind(this))
         console.log(items)
         return  (
-
-            <div style={{ height: '100%', overflowY: 'scroll' }} onScroll={this.handleScroll}>
-                <ol>
+        <div className="info_episode" id="aa">
                     {items}
-                </ol>
-            </div>
+        </div>
         )
     };
 
