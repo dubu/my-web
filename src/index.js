@@ -276,7 +276,7 @@ var ListView = function (_React$Component3) {
             return<div key={index} className="box_episode">
                 <a href={item.episodeUrl} className="link_episode">
     <span className="figure_img">
-        <img src={item.imageUrl} className="thumb_g" alt=""/>
+        <img src={"//t1.daumcdn.net/thumb/S222x140/?fname="+item.imageUrl} className="thumb_g" alt=""/>
                            </span>
                     <span className="detail_cont">
         <span className="inner_detail">
