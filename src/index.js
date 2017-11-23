@@ -260,32 +260,20 @@ var ListView = function (_React$Component3) {
         console.log("render");
         console.log(this.state.topics);
 
-        // const endIndex= 10;
-        const endIndex= this.state.topics.length;
-
-        // const items = []
-        let index = startIndex
-        // while (index < endIndex) {
-        //     // items.push(<li key={index}>{topics.get(index).title}</li>)
-        //     items.push(<li key={index}>{this.state.topics.items.get(index).title}</li>)
-        //     index++
-        // }
-
-
         var items  =  this.state.topics.map(function (item, index) {
-            return<div key={index} className="box_episode">
-                <a href={item.episodeUrl} className="link_episode">
-    <span className="figure_img">
-        <img src={"//t1.daumcdn.net/thumb/S222x140/?fname="+item.imageUrl} className="thumb_g" alt=""/>
-                           </span>
+            return  <div key={index} className="box_episode">
+                    <a href={item.episodeUrl} className="link_episode">
+                        <span className="figure_img">
+                            <img src={"//t1.daumcdn.net/thumb/S222x140/?fname="+item.imageUrl} className="thumb_g" alt=""/>
+                        </span>
                     <span className="detail_cont">
-        <span className="inner_detail">
-                <strong className="tit_g">{item.episodeName}</strong>
-                <span className="desc_g">{item.projectName}</span>
-           </span>
-    </span>
-                </a>
-            </div>
+                        <span className="inner_detail">
+                        <strong className="tit_g">{item.episodeName}</strong>
+                            <span className="desc_g">{item.projectName}</span>
+                        </span>
+                    </span>
+                    </a>
+                    </div>
         }.bind(this))
         console.log(items)
         return  (
