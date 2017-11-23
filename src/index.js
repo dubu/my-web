@@ -252,7 +252,7 @@ var ListView = function (_React$Component3) {
         if(this.state.topics){
 
         }else{
-            return   (<div> <h1> hi</h1> load...</div>)
+            return   (<div> <h1> loading...</h1> ...</div>)
         }
         // var post = this.state.topics;
         const startIndex = 1;
@@ -273,11 +273,23 @@ var ListView = function (_React$Component3) {
 
 
         var items  =  this.state.topics.map(function (item, index) {
-            return <div key={index}>{item.episodeName}</div>
+            return<div key={index} className="box_episode">
+                <a href={item.episodeUrl} className="link_episode">
+    <span className="figure_img">
+        <img src={item.imageUrl} className="thumb_g" alt=""/>
+                           </span>
+                    <span className="detail_cont">
+        <span className="inner_detail">
+                <strong className="tit_g">{item.episodeName}</strong>
+                <span className="desc_g">{item.projectName}</span>
+           </span>
+    </span>
+                </a>
+            </div>
         }.bind(this))
         console.log(items)
         return  (
-        <div className="info_episode" id="aa">
+        <div className="info_episode">
                     {items}
         </div>
         )
